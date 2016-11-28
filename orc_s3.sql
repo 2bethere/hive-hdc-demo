@@ -73,6 +73,6 @@ create table flights (
 ) 
 PARTITIONED BY (DateOfFlight date)
 STORED AS ORC
-LOCATION '/data/airline_orc/airline_ontime.db/flights'
+LOCATION 's3a://hw-sampledata/airline_orc/airline_ontime.db/flights'
 TBLPROPERTIES("orc.bloom.filter.columns"="*")
 ;
