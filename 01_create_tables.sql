@@ -44,7 +44,9 @@ LOCATION 's3a://hw-sampledata/airline_orc/airline_ontime.db/planes'
 ;
 
 
+
 create table flights (
+  DateOfFlight date,
   DepTime  int,
   CRSDepTime int,
   ArrTime int,
@@ -71,8 +73,9 @@ create table flights (
   SecurityDelay int,
   LateAircraftDelay int
 ) 
-PARTITIONED BY (DateOfFlight date)
+PARTITIONED BY (Year int)
 STORED AS ORC
-LOCATION 's3a://hw-sampledata/airline_orc/airline_ontime.db/flights'
+LOCATION 's3a://hw-sampledata/airline_orc/airline_ontime.db/flightsyear'
 TBLPROPERTIES("orc.bloom.filter.columns"="*")
 ;
+
