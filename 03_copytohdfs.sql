@@ -8,19 +8,16 @@ drop table if exists planes_hdfs purge;
 
 create table airports_hdfs
 STORED AS ORC
-LOCATION '/tmp/airline_orc/airline_ontime.db/airports'
 AS SELECT * from airports
 ;
 create table airlines_hdfs
 STORED AS ORC
-LOCATION '/tmp/airline_orc/airline_ontime.db/airlines'
 AS SELECT * from airlines
 ;
 
 
 create table planes_hdfs 
 STORED AS ORC
-LOCATION '/tmp/airline_orc/airline_ontime.db/planes'
 AS SELECT * from planes
 ;
 
@@ -56,10 +53,9 @@ create table flights_hdfs (
 ) 
 PARTITIONED BY (Year int)
 STORED AS ORC
-LOCATION '/tmp/airline_orc/airline_ontime.db/flights'
 TBLPROPERTIES("orc.bloom.filter.columns"="*")
 ;
-INSERT OVERWRITE TABLE flights PARTITION(year) 
+INSERT OVERWRITE TABLE flights_hdfs PARTITION(year) 
 SELECT * FROM flights;
 
 
