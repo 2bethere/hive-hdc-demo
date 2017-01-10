@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS hwxdemo;
+USE hwxdemo;
 set hive.exec.dynamic.partition.mode=nonstrict;
 set hive.optimize.sort.dynamic.partition=true;
 
@@ -64,12 +66,16 @@ alter table airports_hdfs add constraint airports_hdfs_c1 primary key (iata) dis
 alter table airlines_hdfs add constraint airlines_hdfs_c1 primary key (code) disable novalidate;
 alter table planes_hdfs add constraint planes_hdfs_c1 primary key (tailnum) disable novalidate;
 
-alter table flights add constraint flights_hdfs_new_c1 foreign key (Origin) references airports_hdfs(iata) disable novalidate rely;
-alter table flights add constraint flights_hdfs_new_c2 foreign key (Dest) references airports_hdfs(iata) disable novalidate rely;
-alter table flights add constraint flights_hdfs_new_c3 foreign key (UniqueCarrier) references airlines_hdfs(code) disable novalidate rely;
-alter table flights add constraint flights_hdfs_new_c4 foreign key (TailNum) references planes_hdfs(TailNum) disable novalidate rely;
+alter table flights_hdfs add constraint flights_hdfs_new_c1 foreign key (Origin) references airports_hdfs(iata) disable novalidate rely;
+alter table flights_hdfs add constraint flights_hdfs_new_c2 foreign key (Dest) references airports_hdfs(iata) disable novalidate rely;
+alter table flights_hdfs add constraint flights_hdfs_new_c3 foreign key (UniqueCarrier) references airlines_hdfs(code) disable novalidate rely;
+alter table flights_hdfs add constraint flights_hdfs_new_c4 foreign key (TailNum) references planes_hdfs(TailNum) disable novalidate rely;
 
 ANALYZE TABLE airports_hdfs COMPUTE STATISTICS FOR COLUMNS;
 ANALYZE TABLE airlines_hdfs COMPUTE STATISTICS FOR COLUMNS;
 ANALYZE TABLE planes_hdfs COMPUTE STATISTICS FOR COLUMNS;
 
+DROP TABLE if exists flights;
+DROP TABLE if exists airports;
+DROP TABLE if exists airlines;
+DROP TABLE if exists planes;

@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS hwxdemo;
+USE hwxdemo;
+
 msck repair table flights;
 
 alter table airports add constraint airports_c1 primary key (iata) disable novalidate;

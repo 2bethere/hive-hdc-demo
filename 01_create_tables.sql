@@ -1,6 +1,9 @@
 set hive.exec.dynamic.partition.mode=nonstrict;
 set hive.optimize.sort.dynamic.partition=true;
 
+CREATE DATABASE IF NOT EXISTS hwxdemo;
+USE hwxdemo;
+
 drop table if exists flights purge;
 drop table if exists airports purge;
 drop table if exists airlines purge;
