@@ -74,8 +74,3 @@ alter table flights_hdfs add constraint flights_hdfs_new_c4 foreign key (TailNum
 ANALYZE TABLE airports_hdfs COMPUTE STATISTICS FOR COLUMNS;
 ANALYZE TABLE airlines_hdfs COMPUTE STATISTICS FOR COLUMNS;
 ANALYZE TABLE planes_hdfs COMPUTE STATISTICS FOR COLUMNS;
-
-DROP TABLE if exists flights;
-DROP TABLE if exists airports;
-DROP TABLE if exists airlines;
-DROP TABLE if exists planes;
