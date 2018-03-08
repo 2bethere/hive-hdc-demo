@@ -9,3 +9,8 @@ ERROR : FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.ex
 
 Add the following to hive-site.xml and restart
 fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider
+
+hive.llap.io.encode.enabled=true
+hive.llap.cache.allow.synthetic.fileid=true;
+hive.vectorized.use.vector.serde.deserialize=true;
+hive.vectorized.use.row.serde.deserialize=true;
